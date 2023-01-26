@@ -1,0 +1,25 @@
+{
+    "name": "nw-next-example",
+    "private": true,
+    "type": "module",
+    "main": "http://localhost:4000",
+    "node-remote": "http://localhost:4000",
+    "scripts": {
+        "dev": "concurrently npm:dev:web npm:dev:ntv",
+        "dev:web": "next dev -p 4000",
+        "dev:ntv": "wait-on http-get://localhost:4000 && nw .",
+        "bld": "concurrently npm:bld:web",
+        "bld:web": "next build"
+    },
+    "engines": {
+        "node": ">= 19.3.0"
+    },
+    "devDependencies": {
+        "concurrently": "^7.6.0",
+        "next": "^13.1.5",
+        "nw": "^0.72.0-sdk",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "wait-on": "^7.0.1"
+    }
+}
