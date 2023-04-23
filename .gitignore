@@ -1,3 +1,7 @@
+# runtime
+.next
 node_modules
 
-.next
+# application
+build
+cache

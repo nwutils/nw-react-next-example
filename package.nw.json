@@ -1,0 +1,5 @@
+{
+    "name": "nw-next-example",
+    "main": "./server/pages/index.html",
+    "type": "commonjs"
+}
