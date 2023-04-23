@@ -1,6 +1,6 @@
-# NW Next.js Example
+# NW.js Next.js Example
 
-Extremely minimal unopiniated NW NExt.js application.
+An example of Next.js running in NW.js
 
 ## Getting Started
 
@@ -10,15 +10,13 @@ Install node modules
 npm i
 ```
 
-Run application
+Run application:
 
 ```shell
 npm run dev
 ```
 
-TODO: Build application
-
-> Using `nw-builder`
+Build application:
 
 ```shell
 npm run bld
