@@ -18,7 +18,7 @@
     },
     "devDependencies": {
         "concurrently": "^8.2.0",
-        "next": "^13.4.7",
+        "next": "^13.4.8",
         "nw-builder": "^4.3.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
