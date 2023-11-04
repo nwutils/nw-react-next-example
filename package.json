@@ -18,10 +18,10 @@
     },
     "devDependencies": {
         "concurrently": "^8.2.2",
-        "next": "^14.0.0",
+        "next": "^14.0.1",
         "nw-builder": "^4.4.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "wait-on": "^7.0.1"
+        "wait-on": "^7.1.0"
     }
 }
