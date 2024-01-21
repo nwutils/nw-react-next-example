@@ -9,12 +9,9 @@
         "dev": "concurrently npm:dev:website npm:dev:desktop",
         "dev:website": "next dev -p 4000",
         "dev:desktop": "wait-on http-get://localhost:4000 && nwbuild --mode=run --version=0.72.0 --flavor=sdk --no-glob .",
-        "bld": "npm run bld:website && node ./hooks/pre-nw.js && npm run bld:desktop",
+        "bld": "npm run bld:website && npm run bld:desktop",
         "bld:website": "next build",
-        "bld:desktop": "nwbuild --mode=build --version=0.72.0 --flavor=sdk --no-glob --outDir=./build/desktop .next"
-    },
-    "engines": {
-        "node": ">= 19.3.0"
+        "bld:desktop": "nwbuild --mode=build --version=0.72.0 --flavor=sdk --outDir=./build/desktop --managedManifest=./package.nw.json --glob=false .next"
     },
     "devDependencies": {
         "concurrently": "^8.2.2",
@@ -23,5 +20,9 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "wait-on": "^7.2.0"
-    }
+    },
+    "engines": {
+        "node": "19.3.0"
+    },
+    "packageManager": "npm@10.3.0"
 }
