@@ -21,3 +21,7 @@ Build application:
 ```shell
 npm run bld
 ```
+
+## Accessing NW.js inside Next application
+
+If you are trying to call `nw.require` function, Next will fail and say that
