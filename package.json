@@ -6,7 +6,8 @@
     "node-remote": "http://localhost:4000",
     "scripts": {
         "postinstall": "nwbuild --mode=get --version=0.72.0 --flavor=sdk",
-        "dev": "concurrently npm:dev:website npm:dev:desktop",
+        "lint": "next lint",
+        "dev": "concurrently -k npm:dev:website npm:dev:desktop",
         "dev:website": "next dev -p 4000",
         "dev:desktop": "wait-on http-get://localhost:4000 && nwbuild --mode=run --version=0.72.0 --flavor=sdk --no-glob .",
         "bld": "npm run bld:website && node ./hooks/pre-nw.js && npm run bld:desktop",
@@ -17,11 +18,36 @@
         "node": ">= 19.3.0"
     },
     "devDependencies": {
+        "@next/eslint-plugin-next": "^14.1.0",
         "concurrently": "^8.2.2",
+        "eslint": "^8.56.0",
         "next": "^14.1.0",
         "nw-builder": "^4.5.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "wait-on": "^7.2.0"
+    },
+    "eslintConfig": {
+        "env": {
+            "browser": true,
+            "es6": true
+        },
+        "parserOptions": {
+            "sourceType": "module",
+            "ecmaFeatures": {
+                "jsx": true
+            }
+        },
+        "globals": {
+            "nw": true
+        },
+        "extends": [
+            "plugin:@next/next/recommended"
+        ],
+        "settings": {
+            "react": {
+                "version": "detect"
+            }
+        }
     }
 }
