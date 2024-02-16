@@ -5,17 +5,18 @@
     "main": "http://localhost:4000",
     "node-remote": "http://localhost:4000",
     "scripts": {
-        "postinstall": "nwbuild --mode=get --version=0.72.0 --flavor=sdk",
+        "postinstall": "base-volta-off-of-nwjs",
         "lint": "next lint",
         "dev": "concurrently -k npm:dev:website npm:dev:desktop",
         "dev:website": "next dev -p 4000",
-        "dev:desktop": "wait-on http-get://localhost:4000 && nwbuild --mode=run --version=0.72.0 --flavor=sdk --no-glob .",
-        "bld": "npm run bld:website && npm run bld:desktop",
-        "bld:website": "next build",
-        "bld:desktop": "nwbuild --mode=build --version=0.72.0 --flavor=sdk --outDir=./build/desktop --managedManifest=./package.nw.json --glob=false .next"
+        "dev:desktop": "wait-on http-get://localhost:4000 && nw .",
+        "build": "npm run build:website && npm run build:desktop",
+        "build:website": "next build",
+        "build:desktop": "nwbuild --mode=build --flavor=sdk --cacheDir=./node_modules/nw --outDir=./build/desktop --managedManifest=./package.nw.json --glob=false .next"
     },
     "devDependencies": {
         "@next/eslint-plugin-next": "^14.1.0",
+        "base-volta-off-of-nwjs": "^1.0.3",
         "concurrently": "^8.2.2",
         "eslint": "^8.56.0",
         "next": "^14.1.0",
@@ -50,5 +51,8 @@
                 "version": "detect"
             }
         }
+    },
+    "dependencies": {
+        "nw": "^0.84.0"
     }
 }
