@@ -4,24 +4,24 @@
     "type": "module",
     "main": "http://localhost:4000",
     "node-remote": "http://localhost:4000",
+    "node-main": "server.js",
     "scripts": {
-        "postinstall": "nwbuild --mode=get --version=0.72.0 --flavor=sdk",
+        "postinstall": "base-volta-off-of-nwjs",
         "lint": "next lint",
         "dev": "concurrently -k npm:dev:website npm:dev:desktop",
-        "dev:website": "next dev -p 4000",
-        "dev:desktop": "wait-on http-get://localhost:4000 && nwbuild --mode=run --version=0.72.0 --flavor=sdk --no-glob .",
-        "bld": "npm run bld:website && node ./hooks/pre-nw.js && npm run bld:desktop",
+        "dev:website": "node server.js",
+        "dev:desktop": "wait-on http-get://localhost:4000 && nw .",
+        "bld": "npm run bld:website && npm run bld:desktop",
         "bld:website": "next build",
-        "bld:desktop": "nwbuild --mode=build --version=0.72.0 --flavor=sdk --no-glob --outDir=./build/desktop .next"
-    },
-    "engines": {
-        "node": ">= 19.3.0"
+        "bld:desktop": "nwbuild --mode=build --managed-manifest=./package.nw.json --no-glob --outDir=./build/desktop .next"
     },
     "devDependencies": {
         "@next/eslint-plugin-next": "^14.2.2",
+        "base-volta-off-of-nwjs": "^1.0.5",
         "concurrently": "^8.2.2",
-        "eslint": "^9.1.0",
+        "eslint": "^8.5.7",
         "next": "^14.2.2",
+        "nw": "^0.86.0-3",
         "nw-builder": "^4.7.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
@@ -38,9 +38,6 @@
                 "jsx": true
             }
         },
-        "globals": {
-            "nw": true
-        },
         "extends": [
             "plugin:@next/next/recommended"
         ],
@@ -49,5 +46,8 @@
                 "version": "detect"
             }
         }
+    },
+    "volta": {
+        "node": "21.1.0"
     }
 }
